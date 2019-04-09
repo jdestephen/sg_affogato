@@ -25,3 +25,24 @@ dataSources:
         - event: LogUpdateActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
           handler: handleUpdatedActor
       file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: FarmFactory
+    network: rinkeby
+    source:
+      address: '0x59f0831790a1413eef94dA83276F0A1F64DC9289'
+      abi: FarmFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      entities:
+        - Farm
+      abis:
+        - name: FarmFactory
+          file: ./abis/FarmFactory.json
+      eventHandlers:
+        - event: LogAddFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string)
+          handler: handleNewFarm
+        - event: LogUpdateFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string)
+          handler: handleUpdatedFarm
+      file: ./src/mapping.ts

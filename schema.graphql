@@ -1,10 +1,21 @@
 type Actor @entity {
   id: ID!
-  name: Bytes!
-  typeOfActor: Bytes!
-  country: Bytes!
-  region: Bytes!
-  email: Bytes!
+  name: String!
+  typeOfActor: String!
+  country: String!
+  region: String!
+  email: String!
   imageHash: String!
   bio: String!
+  farms: [Farm!]! @derivedFrom(field: "owner")
+}
+
+type Farm @entity {
+    id: ID!
+    owner: String!
+    name: String!
+    country: String!
+    region: String!
+    village: String!
+    story: String!
 }
