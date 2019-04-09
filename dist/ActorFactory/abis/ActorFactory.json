@@ -1,0 +1,725 @@
+[
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x3f4ba83a"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x5c975abb"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x715018a6"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x8456cb59"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8da5cb5b"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8f32d59b"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "actorsIds",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xa19bb408"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "addressToActor",
+    "outputs": [
+      {
+        "name": "name",
+        "type": "bytes32"
+      },
+      {
+        "name": "typeOfActor",
+        "type": "bytes32"
+      },
+      {
+        "name": "country",
+        "type": "bytes32"
+      },
+      {
+        "name": "region",
+        "type": "bytes32"
+      },
+      {
+        "name": "email",
+        "type": "bytes32"
+      },
+      {
+        "name": "imageHash",
+        "type": "string"
+      },
+      {
+        "name": "bio",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb905fe50"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xf2fde38b"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_name",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_typeOfActor",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_country",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_region",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_email",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "_bio",
+        "type": "string"
+      }
+    ],
+    "name": "LogAddActor",
+    "type": "event",
+    "signature": "0x58bad912e2d18917798bb5f553e32515c55c6350a4dcfed5180c70d57d435048"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_name",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_typeOfActor",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_country",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_region",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_email",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "_bio",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "_cooperativeAddress",
+        "type": "address"
+      }
+    ],
+    "name": "LogCooperativeAddActor",
+    "type": "event",
+    "signature": "0xd9fdc2c951b35dd44acc488dcf90788528d138843da07b4c6ab2b5b32d9f6263"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_name",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_typeOfActor",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_country",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_region",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_email",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "_bio",
+        "type": "string"
+      }
+    ],
+    "name": "LogUpdateActor",
+    "type": "event",
+    "signature": "0x0e1b370fb11b737a38eb521048ca760c1d1713bf0da2f5128c9f5ad851ef81b1"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "_allowed",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_value",
+        "type": "bool"
+      }
+    ],
+    "name": "LogApproval",
+    "type": "event",
+    "signature": "0x6cc438beee050a8338ac87dc4353c517532095b48b678a7e50f680da7e6c7891"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "_allowed",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_value",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "name": "_cooperativeAddress",
+        "type": "address"
+      }
+    ],
+    "name": "LogCooperativeApproval",
+    "type": "event",
+    "signature": "0xa37d42035b1b045dd4fb0eb340f36a63f5b1b958bfd767654465d7db3f79c431"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event",
+    "signature": "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event",
+    "signature": "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event",
+    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getActorCount",
+    "outputs": [
+      {
+        "name": "count",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x6e2062b2"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "getAccountType",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xae203146"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_target",
+        "type": "address"
+      }
+    ],
+    "name": "isAllowed",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xa1654379"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "returnOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "string"
+      },
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x94a927fe"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_actorAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getActor",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "string"
+      },
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x4138d167"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_name",
+        "type": "bytes32"
+      },
+      {
+        "name": "_typeOfActor",
+        "type": "bytes32"
+      },
+      {
+        "name": "_country",
+        "type": "bytes32"
+      },
+      {
+        "name": "_region",
+        "type": "bytes32"
+      },
+      {
+        "name": "_email",
+        "type": "bytes32"
+      },
+      {
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "name": "_bio",
+        "type": "string"
+      }
+    ],
+    "name": "addActor",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x3a8dfedf"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_name",
+        "type": "bytes32"
+      },
+      {
+        "name": "_typeOfActor",
+        "type": "bytes32"
+      },
+      {
+        "name": "_country",
+        "type": "bytes32"
+      },
+      {
+        "name": "_region",
+        "type": "bytes32"
+      },
+      {
+        "name": "_email",
+        "type": "bytes32"
+      },
+      {
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "name": "_bio",
+        "type": "string"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "cooperativeAddActor",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xd41352a6"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_name",
+        "type": "bytes32"
+      },
+      {
+        "name": "_typeOfActor",
+        "type": "bytes32"
+      },
+      {
+        "name": "_country",
+        "type": "bytes32"
+      },
+      {
+        "name": "_region",
+        "type": "bytes32"
+      },
+      {
+        "name": "_email",
+        "type": "bytes32"
+      },
+      {
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "name": "_bio",
+        "type": "string"
+      }
+    ],
+    "name": "updateActor",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x37aab9c6"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_spender",
+        "type": "address"
+      },
+      {
+        "name": "_value",
+        "type": "bool"
+      }
+    ],
+    "name": "approve",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x3d140d21"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "allower",
+        "type": "address"
+      },
+      {
+        "name": "_spender",
+        "type": "address"
+      },
+      {
+        "name": "_value",
+        "type": "bool"
+      }
+    ],
+    "name": "cooperativeApprove",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xf9338f03"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "destroy",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x83197ef0"
+  }
+]

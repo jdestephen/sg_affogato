@@ -1,8 +1,8 @@
 specVersion: 0.0.1
 description: Affogato Actors
-repository: https://github.com/jdestephen/sg_affogato
+repository: 'https://github.com/jdestephen/sg_affogato'
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: ActorFactory
@@ -18,10 +18,12 @@ dataSources:
         - Actor
       abis:
         - name: ActorFactory
-          file: ./abis/ActorFactory.json
+          file: ActorFactory/abis/ActorFactory.json
       eventHandlers:
-        - event: LogAddActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
+        - event: >-
+            LogAddActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
           handler: handleNewActor
-        - event: LogUpdateActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
+        - event: >-
+            LogUpdateActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
           handler: handleUpdatedActor
-      file: ./src/mapping.ts
+      file: ActorFactory/ActorFactory.wasm

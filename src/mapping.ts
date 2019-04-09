@@ -1,22 +1,32 @@
-import { NewGravatar, UpdatedGravatar } from './types/Gravity/Gravity'
-import { Gravatar } from './types/schema'
+import { LogAddActor, LogUpdateActor } from './types/ActorFactory/ActorFactory'
+import { Actor } from './types/schema'
 
-export function handleNewGravatar(event: NewGravatar): void {
-  let gravatar = new Gravatar(event.params.id.toHex())
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
+export function handleNewActor(event: LogAddActor): void {
+  let actor = new Actor(event.params._id.toHex())
+  actor.name = event.params._name
+  actor.typeOfActor = event.params._typeOfActor
+  actor.country = event.params._country
+  actor.region = event.params._region
+  actor.email = event.params._email
+  actor.imageHash = event.params._imageHash
+  actor.bio = event.params._bio
+
+  actor.save()
 }
 
-export function handleUpdatedGravatar(event: UpdatedGravatar): void {
-  let id = event.params.id.toHex()
-  let gravatar = Gravatar.load(id)
-  if (gravatar == null) {
-    gravatar = new Gravatar(id)
+export function handleUpdatedActor(event: LogUpdateActor): void {
+  let id = event.params._id.toHex()
+  let actor = Actor.load(id)
+  if (actor == null) {
+    actor = new Actor(id)
   }
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
+  actor.name = event.params._name
+  actor.typeOfActor = event.params._typeOfActor
+  actor.country = event.params._country
+  actor.region = event.params._region
+  actor.email = event.params._email
+  actor.imageHash = event.params._imageHash
+  actor.bio = event.params._bio
+
+  actor.save()
 }
