@@ -1,4 +1,4 @@
-import { LogAddActor, LogUpdateActor } from './types/ActorFactory/ActorFactory'
+import { LogAddActor, LogUpdateActor, LogCooperativeAddActor } from './types/ActorFactory/ActorFactory'
 import { LogAddFarm, LogCooperativeAddFarm, LogUpdateFarm, LogCooperativeUpdateFarm } from './types/FarmFactory/FarmFactory'
 import { Actor, Farm } from './types/schema'
 
@@ -21,6 +21,20 @@ export function handleUpdatedActor(event: LogUpdateActor): void {
   if (actor == null) {
     actor = new Actor(id)
   }
+  actor.name = event.params._name.toString()
+  actor.typeOfActor = event.params._typeOfActor.toString()
+  actor.country = event.params._country.toString()
+  actor.region = event.params._region.toString()
+  actor.email = event.params._email.toString()
+  actor.imageHash = event.params._imageHash
+  actor.bio = event.params._bio
+
+  actor.save()
+}
+
+
+export function handleCooperativeAddActor(event: LogCooperativeAddActor): void {
+  let actor = new Actor(event.params._id.toHex())
   actor.name = event.params._name.toString()
   actor.typeOfActor = event.params._typeOfActor.toString()
   actor.country = event.params._country.toString()

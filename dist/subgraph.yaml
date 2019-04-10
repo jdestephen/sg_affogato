@@ -26,6 +26,9 @@ dataSources:
         - event: >-
             LogUpdateActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
           handler: handleUpdatedActor
+        - event: >-
+            LogCooperativeAddActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string,address)
+          handler: handleCooperativeAddActor
       file: ActorFactory/ActorFactory.wasm
   - kind: ethereum/contract
     name: FarmFactory

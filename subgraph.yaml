@@ -24,6 +24,8 @@ dataSources:
           handler: handleNewActor
         - event: LogUpdateActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
           handler: handleUpdatedActor
+        - event: LogCooperativeAddActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string,address)
+          handler: handleCooperativeAddActor
       file: ./src/mapping.ts
   - kind: ethereum/contract
     name: FarmFactory
