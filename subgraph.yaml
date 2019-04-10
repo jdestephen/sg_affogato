@@ -43,6 +43,10 @@ dataSources:
       eventHandlers:
         - event: LogAddFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string)
           handler: handleNewFarm
+        - event: LogCooperativeAddFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string,address)
+          handler: handleCooperativeAddFarm
         - event: LogUpdateFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string)
           handler: handleUpdatedFarm
+        - event: LogCooperativeUpdateFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string,address)
+          handler: handleCooperativeUpdatedFarm
       file: ./src/mapping.ts

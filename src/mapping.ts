@@ -1,5 +1,5 @@
 import { LogAddActor, LogUpdateActor } from './types/ActorFactory/ActorFactory'
-import { LogAddFarm, LogUpdateFarm } from './types/FarmFactory/FarmFactory'
+import { LogAddFarm, LogCooperativeAddFarm, LogUpdateFarm, LogCooperativeUpdateFarm } from './types/FarmFactory/FarmFactory'
 import { Actor, Farm } from './types/schema'
 
 export function handleNewActor(event: LogAddActor): void {
@@ -35,7 +35,19 @@ export function handleUpdatedActor(event: LogUpdateActor): void {
 
 export function handleNewFarm(event: LogAddFarm): void {
   let farm = new Farm(event.params._id.toHex())
-  farm.owner = event.params._ownerAddress.toString()
+  farm.owner = event.params._ownerAddress.toHex()
+  farm.name = event.params._name.toString()
+  farm.country = event.params._country.toString()
+  farm.region = event.params._region.toString()
+  farm.village = event.params._village.toString()
+  farm.story = event.params._story
+
+  farm.save()
+}
+
+export function handleCooperativeAddFarm(event: LogCooperativeAddFarm): void {
+  let farm = new Farm(event.params._id.toHex())
+  farm.owner = event.params._ownerAddress.toHex()
   farm.name = event.params._name.toString()
   farm.country = event.params._country.toString()
   farm.region = event.params._region.toString()
@@ -51,7 +63,23 @@ export function handleUpdatedFarm(event: LogUpdateFarm): void {
   if (farm == null) {
     farm = new Farm(id)
   }
-  farm.owner = event.params._ownerAddress.toString()
+  farm.owner = event.params._ownerAddress.toHex()
+  farm.name = event.params._name.toString()
+  farm.country = event.params._country.toString()
+  farm.region = event.params._region.toString()
+  farm.village = event.params._village.toString()
+  farm.story = event.params._story
+
+  farm.save()
+}
+
+export function handleCooperativeUpdatedFarm(event: LogCooperativeUpdateFarm): void {
+  let id = event.params._id.toHex()
+  let farm = Farm.load(id)
+  if (farm == null) {
+    farm = new Farm(id)
+  }
+  farm.owner = event.params._ownerAddress.toHex()
   farm.name = event.params._name.toString()
   farm.country = event.params._country.toString()
   farm.region = event.params._region.toString()
