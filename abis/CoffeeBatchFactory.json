@@ -1,5 +1,53 @@
 [
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "coffeeBatches",
+      "outputs": [
+        {
+          "name": "uid",
+          "type": "uint256"
+        },
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "farmUid",
+          "type": "uint256"
+        },
+        {
+          "name": "altitude",
+          "type": "uint16"
+        },
+        {
+          "name": "variety",
+          "type": "bytes32"
+        },
+        {
+          "name": "process",
+          "type": "bytes32"
+        },
+        {
+          "name": "size",
+          "type": "uint32"
+        },
+        {
+          "name": "isSold",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x395209b2"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "unpause",
@@ -33,74 +81,6 @@
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0x715018a6"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "farms",
-      "outputs": [
-        {
-          "name": "uid",
-          "type": "uint256"
-        },
-        {
-          "name": "ownerAddress",
-          "type": "address"
-        },
-        {
-          "name": "name",
-          "type": "bytes32"
-        },
-        {
-          "name": "country",
-          "type": "bytes32"
-        },
-        {
-          "name": "region",
-          "type": "bytes32"
-        },
-        {
-          "name": "village",
-          "type": "bytes32"
-        },
-        {
-          "name": "story",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x7da470ea"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "address"
-        },
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "farmerToFarms",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x7f2265aa"
     },
     {
       "constant": false,
@@ -143,6 +123,30 @@
       "signature": "0x8f32d59b"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "farmToBatches",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x978e6e71"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -179,38 +183,43 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
+          "name": "_owner",
           "type": "address"
         },
         {
           "indexed": false,
-          "name": "_name",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "name": "_variety",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
+          "name": "_size",
+          "type": "uint32"
         },
         {
           "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
-          "type": "string"
+          "name": "_isSold",
+          "type": "bool"
         }
       ],
-      "name": "LogAddFarm",
+      "name": "LogAddCoffeeBatch",
       "type": "event",
-      "signature": "0xd3098ac7a01b8686f2c8cf144119f6859cf9c56bf618f465fe488e3e6656e46f"
+      "signature": "0xda0e499d70467a0ca4fb42c053a056fe9a6ffb184ddf18c89510487f666dc70a"
     },
     {
       "anonymous": false,
@@ -222,33 +231,38 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
+          "name": "_owner",
           "type": "address"
         },
         {
           "indexed": false,
-          "name": "_name",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "name": "_variety",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
+          "name": "_size",
+          "type": "uint32"
         },
         {
           "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
-          "type": "string"
+          "name": "_isSold",
+          "type": "bool"
         },
         {
           "indexed": false,
@@ -256,9 +270,9 @@
           "type": "address"
         }
       ],
-      "name": "LogCooperativeAddFarm",
+      "name": "LogCooperativeAddCoffeeBatch",
       "type": "event",
-      "signature": "0xb907d9604da8df7ea880542c0d8e00cbbed12bf917b1737040441c07e74c9b3b"
+      "signature": "0x5d36bfbda99f846f64778cc32193e8ded32114a24fc1b2dd2027fcca7ac07cf0"
     },
     {
       "anonymous": false,
@@ -270,38 +284,43 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_owner",
           "type": "address"
         },
         {
           "indexed": false,
-          "name": "_name",
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "name": "_variety",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
+          "name": "_size",
+          "type": "uint32"
         },
         {
           "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
-          "type": "string"
+          "name": "_isSold",
+          "type": "bool"
         }
       ],
-      "name": "LogUpdateFarm",
+      "name": "LogUpdateCoffeeBatch",
       "type": "event",
-      "signature": "0x7f5e4e1c4757aaf20449560bac8ece2ff17e57224d66d47680d9f30bf3fdab2f"
+      "signature": "0x452c3288eaf33d9ce68b9f9a6a75b31759d993d9e43e12542260b615e1c5114f"
     },
     {
       "anonymous": false,
@@ -313,33 +332,38 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_owner",
           "type": "address"
         },
         {
           "indexed": false,
-          "name": "_name",
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "name": "_variety",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
+          "name": "_size",
+          "type": "uint32"
         },
         {
           "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
-          "type": "string"
+          "name": "_isSold",
+          "type": "bool"
         },
         {
           "indexed": false,
@@ -347,9 +371,9 @@
           "type": "address"
         }
       ],
-      "name": "LogCooperativeUpdateFarm",
+      "name": "LogCooperativeUpdateCoffeeBatch",
       "type": "event",
-      "signature": "0x21f6091b3e1952e05b74c536d861fcf1b8cbdf1ade243c5689626630c69c7e22"
+      "signature": "0x4f45af94a5cf232ea3292101c14c625ea609ff041a59ff3ec69b918769dbf65f"
     },
     {
       "anonymous": false,
@@ -399,31 +423,31 @@
       "constant": true,
       "inputs": [
         {
-          "name": "_farmer",
-          "type": "address"
+          "name": "_farmUid",
+          "type": "uint256"
         }
       ],
-      "name": "getFarmersFarmsCount",
+      "name": "getFarmCoffeeBatchCount",
       "outputs": [
         {
-          "name": "",
+          "name": "count",
           "type": "uint256"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0x804990bc"
+      "signature": "0x5c601a9c"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "uid",
+          "name": "_uid",
           "type": "uint256"
         }
       ],
-      "name": "getFarmById",
+      "name": "getCoffeeBatchById",
       "outputs": [
         {
           "name": "",
@@ -431,173 +455,201 @@
         },
         {
           "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
           "type": "address"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint16"
+        },
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "uint32"
+        },
+        {
+          "name": "",
+          "type": "bool"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0xfd3cb451"
+      "signature": "0x39a3a8bb"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_name",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "name": "_variety",
           "type": "bytes32"
         },
         {
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
+          "name": "_size",
+          "type": "uint32"
         }
       ],
-      "name": "addFarm",
+      "name": "addCoffeeBatch",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0xf3020dd1"
+      "signature": "0x2e3e7a23"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_name",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "name": "_variety",
           "type": "bytes32"
         },
         {
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
+          "name": "_size",
+          "type": "uint32"
         },
         {
           "name": "_farmerAddress",
           "type": "address"
         }
       ],
-      "name": "cooperativeAddFarm",
+      "name": "cooperativeAddCoffeeBatch",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0x79e3da97"
+      "signature": "0xbcb6bf05"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_uid",
+          "name": "_coffeeUid",
           "type": "uint256"
         },
         {
-          "name": "_name",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "name": "_variety",
           "type": "bytes32"
         },
         {
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
+          "name": "_size",
+          "type": "uint32"
         }
       ],
-      "name": "updateFarm",
+      "name": "updateCoffeeBatch",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0xd8d01e3e"
+      "signature": "0x584f929c"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_uid",
+          "name": "_coffeeUid",
           "type": "uint256"
         },
         {
-          "name": "_name",
+          "name": "_farmUid",
+          "type": "uint256"
+        },
+        {
+          "name": "_altitude",
+          "type": "uint16"
+        },
+        {
+          "name": "_variety",
           "type": "bytes32"
         },
         {
-          "name": "_country",
+          "name": "_process",
           "type": "bytes32"
         },
         {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
+          "name": "_size",
+          "type": "uint32"
         },
         {
           "name": "_farmerAddress",
           "type": "address"
         }
       ],
-      "name": "cooperativeUpdateFarm",
+      "name": "cooperativeUpdateCoffeeBatch",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0x5f5dc8fd"
+      "signature": "0x9cd0a83d"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "name": "_coffeeBatchId",
+          "type": "uint256"
+        }
+      ],
+      "name": "actorIsOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x02aa971d"
     },
     {
       "constant": false,
@@ -609,4 +661,4 @@
       "type": "function",
       "signature": "0x83197ef0"
     }
-]
+  ]

@@ -1,0 +1,564 @@
+[
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x3f4ba83a"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x5c975abb"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "tasterToCupProfiles",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x5ca1bcb2"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x715018a6"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x8456cb59"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8da5cb5b"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8f32d59b"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "coffeeBatchToCupProfiles",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb6f2ff5c"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "cupProfiles",
+    "outputs": [
+      {
+        "name": "uid",
+        "type": "uint256"
+      },
+      {
+        "name": "aroma",
+        "type": "bytes32"
+      },
+      {
+        "name": "sweetness",
+        "type": "bytes32"
+      },
+      {
+        "name": "flavor",
+        "type": "bytes32"
+      },
+      {
+        "name": "acidity",
+        "type": "bytes32"
+      },
+      {
+        "name": "body",
+        "type": "bytes32"
+      },
+      {
+        "name": "aftertaste",
+        "type": "bytes32"
+      },
+      {
+        "name": "imageHash",
+        "type": "string"
+      },
+      {
+        "name": "cuppingNote",
+        "type": "uint16"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xce47c40d"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xf2fde38b"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_actorAddress",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "signature": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_coffeeBatchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_tasterAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_aroma",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_sweetness",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_flavor",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_acidity",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_body",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_aftertaste",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "_cuppingNote",
+        "type": "uint16"
+      }
+    ],
+    "name": "LogAddCupProfile",
+    "type": "event",
+    "signature": "0x028fab2af9f6df3e6215ef542e8bd298b7ac1c79aa0a798a4355a91fad738fdf"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_aroma",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_sweetness",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_flavor",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_acidity",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_body",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_aftertaste",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "_cuppingNote",
+        "type": "uint16"
+      }
+    ],
+    "name": "LogUpdateCupProfile",
+    "type": "event",
+    "signature": "0x5d07727eac4519d7b42068cdde43f994c10f6a086258a4c36ab03303039a8008"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event",
+    "signature": "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event",
+    "signature": "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event",
+    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_taster",
+        "type": "address"
+      }
+    ],
+    "name": "getTasterCupProfileCount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x96f915d1"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_coffeeBatch",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCoffeeCupProfileCount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x0ebed1a1"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "uid",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCupProfileById",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "string"
+      },
+      {
+        "name": "",
+        "type": "uint16"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x7eeb2d93"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_coffeeBatchId",
+        "type": "uint256"
+      },
+      {
+        "name": "_aroma",
+        "type": "bytes32"
+      },
+      {
+        "name": "_sweetness",
+        "type": "bytes32"
+      },
+      {
+        "name": "_flavor",
+        "type": "bytes32"
+      },
+      {
+        "name": "_acidity",
+        "type": "bytes32"
+      },
+      {
+        "name": "_body",
+        "type": "bytes32"
+      },
+      {
+        "name": "_aftertaste",
+        "type": "bytes32"
+      },
+      {
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "name": "_cuppingNote",
+        "type": "uint16"
+      }
+    ],
+    "name": "addCupProfile",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x14529121"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_uid",
+        "type": "uint256"
+      },
+      {
+        "name": "_aroma",
+        "type": "bytes32"
+      },
+      {
+        "name": "_sweetness",
+        "type": "bytes32"
+      },
+      {
+        "name": "_flavor",
+        "type": "bytes32"
+      },
+      {
+        "name": "_acidity",
+        "type": "bytes32"
+      },
+      {
+        "name": "_body",
+        "type": "bytes32"
+      },
+      {
+        "name": "_aftertaste",
+        "type": "bytes32"
+      },
+      {
+        "name": "_imageHash",
+        "type": "string"
+      },
+      {
+        "name": "_cuppingNote",
+        "type": "uint16"
+      }
+    ],
+    "name": "updateCupProfileById",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xd6558e30"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "destroy",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x83197ef0"
+  }
+]

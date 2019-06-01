@@ -25,6 +25,30 @@
       "signature": "0x5c975abb"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "tasterToCupProfiles",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x5ca1bcb2"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "renounceOwnership",
@@ -33,74 +57,6 @@
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0x715018a6"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "farms",
-      "outputs": [
-        {
-          "name": "uid",
-          "type": "uint256"
-        },
-        {
-          "name": "ownerAddress",
-          "type": "address"
-        },
-        {
-          "name": "name",
-          "type": "bytes32"
-        },
-        {
-          "name": "country",
-          "type": "bytes32"
-        },
-        {
-          "name": "region",
-          "type": "bytes32"
-        },
-        {
-          "name": "village",
-          "type": "bytes32"
-        },
-        {
-          "name": "story",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x7da470ea"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "address"
-        },
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "farmerToFarms",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x7f2265aa"
     },
     {
       "constant": false,
@@ -143,6 +99,82 @@
       "signature": "0x8f32d59b"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "coffeeBatchToCupProfiles",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb6f2ff5c"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "cupProfiles",
+      "outputs": [
+        {
+          "name": "uid",
+          "type": "uint256"
+        },
+        {
+          "name": "aroma",
+          "type": "bytes32"
+        },
+        {
+          "name": "sweetness",
+          "type": "bytes32"
+        },
+        {
+          "name": "flavor",
+          "type": "bytes32"
+        },
+        {
+          "name": "acidity",
+          "type": "bytes32"
+        },
+        {
+          "name": "body",
+          "type": "bytes32"
+        },
+        {
+          "name": "aftertaste",
+          "type": "bytes32"
+        },
+        {
+          "name": "imageHash",
+          "type": "string"
+        },
+        {
+          "name": "cuppingNote",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xce47c40d"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -179,38 +211,58 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
+          "name": "_coffeeBatchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_tasterAddress",
           "type": "address"
         },
         {
           "indexed": false,
-          "name": "_name",
+          "name": "_aroma",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_country",
+          "name": "_sweetness",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_region",
+          "name": "_flavor",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_village",
+          "name": "_acidity",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_story",
+          "name": "_body",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "_aftertaste",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "_imageHash",
           "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_cuppingNote",
+          "type": "uint16"
         }
       ],
-      "name": "LogAddFarm",
+      "name": "LogAddCupProfile",
       "type": "event",
-      "signature": "0xd3098ac7a01b8686f2c8cf144119f6859cf9c56bf618f465fe488e3e6656e46f"
+      "signature": "0x028fab2af9f6df3e6215ef542e8bd298b7ac1c79aa0a798a4355a91fad738fdf"
     },
     {
       "anonymous": false,
@@ -222,134 +274,48 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_name",
+          "name": "_aroma",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_country",
+          "name": "_sweetness",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_region",
+          "name": "_flavor",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_village",
+          "name": "_acidity",
           "type": "bytes32"
         },
         {
           "indexed": false,
-          "name": "_story",
+          "name": "_body",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "_aftertaste",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "_imageHash",
           "type": "string"
         },
         {
           "indexed": false,
-          "name": "_cooperativeAddress",
-          "type": "address"
+          "name": "_cuppingNote",
+          "type": "uint16"
         }
       ],
-      "name": "LogCooperativeAddFarm",
+      "name": "LogUpdateCupProfile",
       "type": "event",
-      "signature": "0xb907d9604da8df7ea880542c0d8e00cbbed12bf917b1737040441c07e74c9b3b"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "name": "_ownerAddress",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
-          "type": "string"
-        }
-      ],
-      "name": "LogUpdateFarm",
-      "type": "event",
-      "signature": "0x7f5e4e1c4757aaf20449560bac8ece2ff17e57224d66d47680d9f30bf3fdab2f"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "name": "_ownerAddress",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_cooperativeAddress",
-          "type": "address"
-        }
-      ],
-      "name": "LogCooperativeUpdateFarm",
-      "type": "event",
-      "signature": "0x21f6091b3e1952e05b74c536d861fcf1b8cbdf1ade243c5689626630c69c7e22"
+      "signature": "0x5d07727eac4519d7b42068cdde43f994c10f6a086258a4c36ab03303039a8008"
     },
     {
       "anonymous": false,
@@ -399,11 +365,11 @@
       "constant": true,
       "inputs": [
         {
-          "name": "_farmer",
+          "name": "_taster",
           "type": "address"
         }
       ],
-      "name": "getFarmersFarmsCount",
+      "name": "getTasterCupProfileCount",
       "outputs": [
         {
           "name": "",
@@ -413,7 +379,27 @@
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0x804990bc"
+      "signature": "0x96f915d1"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_coffeeBatch",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCoffeeCupProfileCount",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x0ebed1a1"
     },
     {
       "constant": true,
@@ -423,7 +409,7 @@
           "type": "uint256"
         }
       ],
-      "name": "getFarmById",
+      "name": "getCupProfileById",
       "outputs": [
         {
           "name": "",
@@ -447,83 +433,76 @@
         },
         {
           "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
           "type": "string"
         },
         {
           "name": "",
-          "type": "address"
+          "type": "uint16"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0xfd3cb451"
+      "signature": "0x7eeb2d93"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
-        }
-      ],
-      "name": "addFarm",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf3020dd1"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
-        },
-        {
-          "name": "_farmerAddress",
+          "name": "_owner",
           "type": "address"
+        },
+        {
+          "name": "_coffeeBatchId",
+          "type": "uint256"
+        },
+        {
+          "name": "_aroma",
+          "type": "bytes32"
+        },
+        {
+          "name": "_sweetness",
+          "type": "bytes32"
+        },
+        {
+          "name": "_flavor",
+          "type": "bytes32"
+        },
+        {
+          "name": "_acidity",
+          "type": "bytes32"
+        },
+        {
+          "name": "_body",
+          "type": "bytes32"
+        },
+        {
+          "name": "_aftertaste",
+          "type": "bytes32"
+        },
+        {
+          "name": "_imageHash",
+          "type": "string"
+        },
+        {
+          "name": "_cuppingNote",
+          "type": "uint16"
         }
       ],
-      "name": "cooperativeAddFarm",
+      "name": "addCupProfile",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0x79e3da97"
+      "signature": "0x14529121"
     },
     {
       "constant": false,
@@ -533,71 +512,44 @@
           "type": "uint256"
         },
         {
-          "name": "_name",
+          "name": "_aroma",
           "type": "bytes32"
         },
         {
-          "name": "_country",
+          "name": "_sweetness",
           "type": "bytes32"
         },
         {
-          "name": "_region",
+          "name": "_flavor",
           "type": "bytes32"
         },
         {
-          "name": "_village",
+          "name": "_acidity",
           "type": "bytes32"
         },
         {
-          "name": "_story",
+          "name": "_body",
+          "type": "bytes32"
+        },
+        {
+          "name": "_aftertaste",
+          "type": "bytes32"
+        },
+        {
+          "name": "_imageHash",
           "type": "string"
+        },
+        {
+          "name": "_cuppingNote",
+          "type": "uint16"
         }
       ],
-      "name": "updateFarm",
+      "name": "updateCupProfileById",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0xd8d01e3e"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_uid",
-          "type": "uint256"
-        },
-        {
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
-        },
-        {
-          "name": "_farmerAddress",
-          "type": "address"
-        }
-      ],
-      "name": "cooperativeUpdateFarm",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x5f5dc8fd"
+      "signature": "0xd6558e30"
     },
     {
       "constant": false,
@@ -609,4 +561,4 @@
       "type": "function",
       "signature": "0x83197ef0"
     }
-]
+  ]

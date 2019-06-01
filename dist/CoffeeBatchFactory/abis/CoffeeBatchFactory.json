@@ -1,0 +1,664 @@
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "coffeeBatches",
+    "outputs": [
+      {
+        "name": "uid",
+        "type": "uint256"
+      },
+      {
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "name": "farmUid",
+        "type": "uint256"
+      },
+      {
+        "name": "altitude",
+        "type": "uint16"
+      },
+      {
+        "name": "variety",
+        "type": "bytes32"
+      },
+      {
+        "name": "process",
+        "type": "bytes32"
+      },
+      {
+        "name": "size",
+        "type": "uint32"
+      },
+      {
+        "name": "isSold",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x395209b2"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x3f4ba83a"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x5c975abb"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x715018a6"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x8456cb59"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8da5cb5b"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8f32d59b"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "farmToBatches",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x978e6e71"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xf2fde38b"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_actorAddress",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "signature": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_size",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "name": "_isSold",
+        "type": "bool"
+      }
+    ],
+    "name": "LogAddCoffeeBatch",
+    "type": "event",
+    "signature": "0xda0e499d70467a0ca4fb42c053a056fe9a6ffb184ddf18c89510487f666dc70a"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_size",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "name": "_isSold",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "name": "_cooperativeAddress",
+        "type": "address"
+      }
+    ],
+    "name": "LogCooperativeAddCoffeeBatch",
+    "type": "event",
+    "signature": "0x5d36bfbda99f846f64778cc32193e8ded32114a24fc1b2dd2027fcca7ac07cf0"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_size",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "name": "_isSold",
+        "type": "bool"
+      }
+    ],
+    "name": "LogUpdateCoffeeBatch",
+    "type": "event",
+    "signature": "0x452c3288eaf33d9ce68b9f9a6a75b31759d993d9e43e12542260b615e1c5114f"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "_size",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "name": "_isSold",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "name": "_cooperativeAddress",
+        "type": "address"
+      }
+    ],
+    "name": "LogCooperativeUpdateCoffeeBatch",
+    "type": "event",
+    "signature": "0x4f45af94a5cf232ea3292101c14c625ea609ff041a59ff3ec69b918769dbf65f"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event",
+    "signature": "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event",
+    "signature": "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event",
+    "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_farmUid",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFarmCoffeeBatchCount",
+    "outputs": [
+      {
+        "name": "count",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x5c601a9c"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_uid",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCoffeeBatchById",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint16"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "uint32"
+      },
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x39a3a8bb"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "name": "_size",
+        "type": "uint32"
+      }
+    ],
+    "name": "addCoffeeBatch",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x2e3e7a23"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "name": "_size",
+        "type": "uint32"
+      },
+      {
+        "name": "_farmerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "cooperativeAddCoffeeBatch",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xbcb6bf05"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_coffeeUid",
+        "type": "uint256"
+      },
+      {
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "name": "_size",
+        "type": "uint32"
+      }
+    ],
+    "name": "updateCoffeeBatch",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x584f929c"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_coffeeUid",
+        "type": "uint256"
+      },
+      {
+        "name": "_farmUid",
+        "type": "uint256"
+      },
+      {
+        "name": "_altitude",
+        "type": "uint16"
+      },
+      {
+        "name": "_variety",
+        "type": "bytes32"
+      },
+      {
+        "name": "_process",
+        "type": "bytes32"
+      },
+      {
+        "name": "_size",
+        "type": "uint32"
+      },
+      {
+        "name": "_farmerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "cooperativeUpdateCoffeeBatch",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x9cd0a83d"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_coffeeBatchId",
+        "type": "uint256"
+      }
+    ],
+    "name": "actorIsOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x02aa971d"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "destroy",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x83197ef0"
+  }
+]

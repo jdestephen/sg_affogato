@@ -8,7 +8,7 @@ dataSources:
     name: ActorFactory
     network: rinkeby
     source:
-      address: '0x51dC72631E9C730590cc93aB631E1B83B9067C0d'
+      address: '0x51dC72631E9C730590cc93aB631E1B83B9067C0d' #'0x3b9FC74F575524D0D158b9E2AE4F99E0fe1c3673'
       abi: ActorFactory
     mapping:
       kind: ethereum/events
@@ -26,12 +26,16 @@ dataSources:
           handler: handleUpdatedActor
         - event: LogCooperativeAddActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string,address)
           handler: handleCooperativeAddActor
-      file: ./src/mapping.ts
+        - event: LogApproval(address,address,bool)
+          handler: handleApproval
+        - event: LogCooperativeApproval(address,address,bool,address)
+          handler: handleCooperativeApproval
+      file: ./src/actor.ts
   - kind: ethereum/contract
     name: FarmFactory
     network: rinkeby
     source:
-      address: '0x59f0831790a1413eef94dA83276F0A1F64DC9289'
+      address: '0x59f0831790a1413eef94dA83276F0A1F64DC9289' #'0xFc27c83FBd63858A437aaeF5e93cE2E72325338B'
       abi: FarmFactory
     mapping:
       kind: ethereum/events
@@ -51,4 +55,50 @@ dataSources:
           handler: handleUpdatedFarm
         - event: LogCooperativeUpdateFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string,address)
           handler: handleCooperativeUpdatedFarm
-      file: ./src/mapping.ts
+      file: ./src/farm.ts
+  - kind: ethereum/contract
+    name: CoffeeBatchFactory
+    network: rinkeby
+    source:
+      address: '0xB5b0C606782Cb8e574d56989CA77FB7672251085' #'0xdfBb6f90b4A59D39F95FB239DC56Ba8e437F0F7b'
+      abi: CoffeeBatchFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      entities:
+        - CoffeeBatch
+      abis:
+        - name: CoffeeBatchFactory
+          file: ./abis/CoffeeBatchFactory.json
+      eventHandlers:
+        - event: LogAddCoffeeBatch(uint256,address,uint256,uint16,bytes32,bytes32,uint32,bool)
+          handler: handleAddCoffeeBatch
+        - event: LogCooperativeAddCoffeeBatch(uint256,address,uint256,uint16,bytes32,bytes32,uint32,bool,address)
+          handler: handleCooperativeAddCoffeeBatch
+        - event: LogUpdateCoffeeBatch(uint256,uint256,address,uint16,bytes32,bytes32,uint32,bool)
+          handler: handleUpdateCoffeeBatch
+        - event: LogCooperativeUpdateCoffeeBatch(uint256,uint256,address,uint16,bytes32,bytes32,uint32,bool,address)
+          handler: handleCooperativeUpdateCoffeeBatch
+      file: ./src/coffeeBatch.ts
+  - kind: ethereum/contract
+    name: TastingFactory
+    network: rinkeby
+    source:
+      address: '0xDBF134Ac46C6C221d84768Ac38fa3E32fF12AAC5' #'0x2ef0e7f90f52E83d9B6743400B7885bb142c98dE'
+      abi: TastingFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      entities:
+        - CupProfile
+      abis:
+        - name: TastingFactory
+          file: ./abis/TastingFactory.json
+      eventHandlers:
+        - event: LogAddCupProfile(uint256,uint256,address,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,string,uint16)
+          handler: handleAddCupProfile
+        - event: LogUpdateCupProfile(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,string,uint16)
+          handler: handleUpdateCupProfile
+      file: ./src/tasting.ts

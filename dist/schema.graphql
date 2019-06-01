@@ -1,21 +1,84 @@
-type Actor @entity {
+interface Actor {
   id: ID!
   name: String!
-  typeOfActor: String!
   country: String!
   region: String!
   email: String!
   imageHash: String!
   bio: String!
-  farms: [Farm!]! @derivedFrom(field: "owner")
+}
+
+type Producer implements Actor @entity  {
+  id: ID!
+  name: String!
+  country: String!
+  region: String!
+  email: String!
+  imageHash: String!
+  bio: String!
+  farms: [Farm!] @derivedFrom(field: "owner")
+  coffeeBatches: [CoffeeBatch!]! @derivedFrom(field: "owner")
+  allowedCooperatives: [Cooperative!]!
+  allowedTasters: [Taster!]!
+}
+
+type Cooperative implements Actor @entity  {
+  id: ID!
+  name: String!
+  country: String!
+  region: String!
+  email: String!
+  imageHash: String!
+  bio: String!
+  producers: [Producer!]! @derivedFrom(field: "allowedCooperatives")
+}
+
+type Taster implements Actor @entity  {
+  id: ID!
+  name: String!
+  country: String!
+  region: String!
+  email: String!
+  imageHash: String!
+  bio: String!
+  cupProfiles: [CupProfile!]! @derivedFrom(field: "taster")
+  producers: [Producer!]! @derivedFrom(field: "allowedTasters")
 }
 
 type Farm @entity {
     id: ID!
-    owner: String!
+    owner: Producer!
     name: String!
     country: String!
     region: String!
     village: String!
     story: String!
+    coffeeBatches: [CoffeeBatch!]! @derivedFrom(field: "farm")
+}
+
+
+type CoffeeBatch @entity {
+    id: ID!
+    owner: Producer!
+    farm: Farm!
+    altitude: Int!
+    variety: String!
+    process: String
+    size: BigInt!
+    isSold: Boolean!
+    cupProfiles: [CupProfile!]! @derivedFrom(field: "coffeeBatch")
+}
+
+type CupProfile @entity {
+    id: ID!
+    coffeeBatch: CoffeeBatch!
+    taster: Taster!
+    aroma: String!
+    sweetness: String!
+    flavor: String!
+    acidity: String!
+    body: String!
+    aftertaste: String!
+    imageHash: String
+    cuppingNote: Int!
 }
