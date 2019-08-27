@@ -1,5 +1,20 @@
 [
     {
+      "constant": true,
+      "inputs": [],
+      "name": "VALIDATOR",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x393df8cb"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "unpause",
@@ -8,6 +23,26 @@
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0x3f4ba83a"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isPauser",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x46fbf68e"
     },
     {
       "constant": true,
@@ -25,6 +60,31 @@
       "signature": "0x5c975abb"
     },
     {
+      "constant": true,
+      "inputs": [],
+      "name": "FARMER",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x617ccf0b"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renouncePauser",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x6ef8d66d"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "renounceOwnership",
@@ -33,6 +93,36 @@
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0x715018a6"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "TASTER",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x7882065a"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "addPauser",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x82dc1ec4"
     },
     {
       "constant": false,
@@ -76,67 +166,78 @@
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "actorsIds",
+      "inputs": [],
+      "name": "COOPERATIVE",
       "outputs": [
         {
           "name": "",
-          "type": "address"
+          "type": "bytes32"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0xa19bb408"
+      "signature": "0xb262a354"
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "addressToActor",
+      "inputs": [],
+      "name": "TECHNICIAN",
       "outputs": [
         {
-          "name": "name",
+          "name": "",
           "type": "bytes32"
-        },
-        {
-          "name": "typeOfActor",
-          "type": "bytes32"
-        },
-        {
-          "name": "country",
-          "type": "bytes32"
-        },
-        {
-          "name": "region",
-          "type": "bytes32"
-        },
-        {
-          "name": "email",
-          "type": "bytes32"
-        },
-        {
-          "name": "imageHash",
-          "type": "string"
-        },
-        {
-          "name": "bio",
-          "type": "string"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0xb905fe50"
+      "signature": "0xb7477f94"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "CERTIFIER",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb86bc74f"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "BENEFIT",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xd6b7716f"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ROASTER",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xdaf7d45b"
     },
     {
       "constant": false,
@@ -154,153 +255,81 @@
       "signature": "0xf2fde38b"
     },
     {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
       "anonymous": false,
       "inputs": [
         {
-          "indexed": true,
-          "name": "_id",
+          "indexed": false,
+          "name": "_actorAddress",
           "type": "address"
         },
         {
           "indexed": false,
-          "name": "_name",
+          "name": "_role",
           "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_typeOfActor",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_email",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_imageHash",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_bio",
-          "type": "string"
         }
       ],
       "name": "LogAddActor",
       "type": "event",
-      "signature": "0x58bad912e2d18917798bb5f553e32515c55c6350a4dcfed5180c70d57d435048"
+      "signature": "0x1a55cf9e5988ca515ccaf10544c777cd1796f14c7b4a24b9c4600b902c2a5272"
     },
     {
       "anonymous": false,
       "inputs": [
-        {
-          "indexed": true,
-          "name": "_id",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_typeOfActor",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_email",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_imageHash",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_bio",
-          "type": "string"
-        },
         {
           "indexed": false,
           "name": "_cooperativeAddress",
           "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_actorAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_role",
+          "type": "bytes32"
         }
       ],
       "name": "LogCooperativeAddActor",
       "type": "event",
-      "signature": "0xd9fdc2c951b35dd44acc488dcf90788528d138843da07b4c6ab2b5b32d9f6263"
+      "signature": "0xcf51eacdc6988eb86cd7965439daeb441bc86a3ed1e7857eb6c5b908ea7f84cb"
     },
     {
       "anonymous": false,
       "inputs": [
         {
-          "indexed": true,
-          "name": "_id",
+          "indexed": false,
+          "name": "_actorAddress",
+          "type": "address"
+        }
+      ],
+      "name": "LogDestroyActor",
+      "type": "event",
+      "signature": "0x3b8796b683aeef8d210dbaca7e0b181f822d0bcd120773c175b0e4c29c2f59e7"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_cooperativeAddress",
           "type": "address"
         },
         {
           "indexed": false,
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_typeOfActor",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_email",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_imageHash",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_bio",
-          "type": "string"
+          "name": "_actorAddress",
+          "type": "address"
         }
       ],
-      "name": "LogUpdateActor",
+      "name": "LogCooperativeDestroyActor",
       "type": "event",
-      "signature": "0x0e1b370fb11b737a38eb521048ca760c1d1713bf0da2f5128c9f5ad851ef81b1"
+      "signature": "0xda6ab05fe414c6541fc772ca1443dd86d3b210a23538e759c386381d6b2cc6d5"
     },
     {
       "anonymous": false,
@@ -384,6 +413,32 @@
       "inputs": [
         {
           "indexed": true,
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "PauserAdded",
+      "type": "event",
+      "signature": "0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "PauserRemoved",
+      "type": "event",
+      "signature": "0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
           "name": "previousOwner",
           "type": "address"
         },
@@ -396,21 +451,6 @@
       "name": "OwnershipTransferred",
       "type": "event",
       "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getActorCount",
-      "outputs": [
-        {
-          "name": "count",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x6e2062b2"
     },
     {
       "constant": true,
@@ -434,13 +474,28 @@
     },
     {
       "constant": true,
+      "inputs": [],
+      "name": "getSenderRole",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x3a88162e"
+    },
+    {
+      "constant": true,
       "inputs": [
         {
-          "name": "_owner",
+          "name": "_allower",
           "type": "address"
         },
         {
-          "name": "_target",
+          "name": "_allowed",
           "type": "address"
         }
       ],
@@ -458,117 +513,190 @@
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "returnOwner",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x94a927fe"
-    },
-    {
-      "constant": true,
       "inputs": [
         {
           "name": "_actorAddress",
           "type": "address"
         }
       ],
-      "name": "getActor",
+      "name": "actorExists",
       "outputs": [
         {
           "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
+          "type": "bool"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0x4138d167"
+      "signature": "0x6a4cd338"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isFarmer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xb9429069"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isCooperative",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xa3fac137"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isCertifier",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x1c2353e1"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isTechnician",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x0f5b76fa"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isTaster",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x82f34e3a"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isValidator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xfacd743b"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isBenefit",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x16ce5b85"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_accountAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isRoaster",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xf6605b07"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_name",
+          "name": "_role",
           "type": "bytes32"
-        },
-        {
-          "name": "_typeOfActor",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_email",
-          "type": "bytes32"
-        },
-        {
-          "name": "_imageHash",
-          "type": "string"
-        },
-        {
-          "name": "_bio",
-          "type": "string"
         }
       ],
       "name": "addActor",
@@ -576,41 +704,17 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0x3a8dfedf"
+      "signature": "0x8920641d"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_name",
+          "name": "_role",
           "type": "bytes32"
         },
         {
-          "name": "_typeOfActor",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_email",
-          "type": "bytes32"
-        },
-        {
-          "name": "_imageHash",
-          "type": "string"
-        },
-        {
-          "name": "_bio",
-          "type": "string"
-        },
-        {
-          "name": "_owner",
+          "name": "_actorAddress",
           "type": "address"
         }
       ],
@@ -619,52 +723,13 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0xd41352a6"
+      "signature": "0xea535ab1"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "name": "_typeOfActor",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_email",
-          "type": "bytes32"
-        },
-        {
-          "name": "_imageHash",
-          "type": "string"
-        },
-        {
-          "name": "_bio",
-          "type": "string"
-        }
-      ],
-      "name": "updateActor",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x37aab9c6"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_spender",
+          "name": "_allowed",
           "type": "address"
         },
         {
@@ -688,11 +753,11 @@
       "constant": false,
       "inputs": [
         {
-          "name": "allower",
+          "name": "_allower",
           "type": "address"
         },
         {
-          "name": "_spender",
+          "name": "_allowed",
           "type": "address"
         },
         {
@@ -711,6 +776,31 @@
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0xf9338f03"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "destroyActor",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x8793ca55"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_actorAddress",
+          "type": "address"
+        }
+      ],
+      "name": "cooperativeDestroyActor",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x6db5a1c3"
     },
     {
       "constant": false,

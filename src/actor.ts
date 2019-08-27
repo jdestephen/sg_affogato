@@ -1,132 +1,128 @@
-import { LogAddActor, LogUpdateActor, LogCooperativeAddActor, LogApproval, LogCooperativeApproval } from './types/ActorFactory/ActorFactory'
-import { Producer, Cooperative, Taster } from './types/schema'
+import { store } from '@graphprotocol/graph-ts'
+import { LogAddActor,
+         LogDestroyActor,
+         LogCooperativeAddActor,
+         LogCooperativeDestroyActor,
+         LogApproval,
+         LogCooperativeApproval
+} from './types/ActorFactory/ActorFactory'
+import { Producer,
+         Certifier,
+         Cooperative,
+         Taster,
+         Technician,
+         Validator,
+         Benefit,
+         Roaster
+} from './types/schema'
+
+
+let FARMER = "FARMER";
+let COOPERATIVE = "COOPERATIVE";
+let CERTIFIER = "CERTIFIER";
+let TECHNICIAN = "TECHNICIAN";
+let TASTER = "TASTER";
+let VALIDATOR = "VALIDATOR";
+let BENEFIT = "BENEFIT";
+let ROASTER = "ROASTER";
 
 
 export function handleNewActor(event: LogAddActor): void {
-    let id = event.params._id.toHex()
-    let type = event.params._typeOfActor.toString()
-    if (type == 'farmer'){
-        let producer = new Producer(id)
-        producer.name = event.params._name.toString()
-        producer.country = event.params._country.toString()
-        producer.region = event.params._region.toString()
-        producer.email = event.params._email.toString()
-        producer.imageHash = event.params._imageHash
-        producer.bio = event.params._bio
+    let actorAddress = event.params._actorAddress.toHex()
+    let role = event.params._role.toString()
+
+    if (role == FARMER){
+        let producer = new Producer(actorAddress)
         producer.allowedCooperatives = []
         producer.allowedTasters = []
-
+        producer.allowedValidators = []
         producer.save()
     }
-    if (type == 'cooperative'){
-        let cooperative = new Cooperative(id)
-        cooperative.name = event.params._name.toString()
-        cooperative.country = event.params._country.toString()
-        cooperative.region = event.params._region.toString()
-        cooperative.email = event.params._email.toString()
-        cooperative.imageHash = event.params._imageHash
-        cooperative.bio = event.params._bio
+    if (role == COOPERATIVE){
+        let cooperative = new Cooperative(actorAddress)
         cooperative.save()
     }
-    if (type == 'taster'){
-        let cooperative = Cooperative.load(id)
-        let producer = Producer.load(id)
-        if (cooperative == null && producer == null){
-            let taster = new Taster(id)
-            taster.name = event.params._name.toString()
-            taster.country = event.params._country.toString()
-            taster.region = event.params._region.toString()
-            taster.email = event.params._email.toString()
-            taster.imageHash = event.params._imageHash
-            taster.bio = event.params._bio
-            taster.save()
-        }
+    if (role == TASTER){
+        let taster = new Taster(actorAddress)
+        taster.save()
+    }
+    if (role == CERTIFIER){
+        let certifier = new Certifier(actorAddress)
+        certifier.save()
+    }
+    if (role == TECHNICIAN){
+        let technician = new Certifier(actorAddress)
+        technician.save()
+    }
+    if (role == VALIDATOR){
+        let validator = new Validator(actorAddress)
+        validator.save()
+    }
+    if (role == BENEFIT){
+        let benefit = new Benefit(actorAddress)
+        benefit.save()
+    }
+    if (role == ROASTER){
+        let roaster = new Roaster(actorAddress)
+        roaster.save()
     }
 }
 
-
-export function handleUpdatedActor(event: LogUpdateActor): void {
-  let id = event.params._id.toHex()
-  let type = event.params._typeOfActor.toString()
-
-  if (type == 'farmer'){
-    let producer = Producer.load(id)
-    if (producer == null) {
-        producer = new Producer(id)
-    }
-    producer.name = event.params._name.toString()
-    producer.country = event.params._country.toString()
-    producer.region = event.params._region.toString()
-    producer.email = event.params._email.toString()
-    producer.imageHash = event.params._imageHash
-    producer.bio = event.params._bio
-
-    producer.save()
-  }
-  if (type == 'cooperative'){
-    let cooperative = Cooperative.load(id)
-    if (cooperative == null) {
-        cooperative = new Cooperative(id)
-    }
-    cooperative.name = event.params._name.toString()
-    cooperative.country = event.params._country.toString()
-    cooperative.region = event.params._region.toString()
-    cooperative.email = event.params._email.toString()
-    cooperative.imageHash = event.params._imageHash
-    cooperative.bio = event.params._bio
-    cooperative.save()
-  }
-  if (type == 'taster'){
-    let taster = Taster.load(id)
-    if (taster == null) {
-        taster = new Taster(id)
-    }
-    taster.name = event.params._name.toString()
-    taster.country = event.params._country.toString()
-    taster.region = event.params._region.toString()
-    taster.email = event.params._email.toString()
-    taster.imageHash = event.params._imageHash
-    taster.bio = event.params._bio
-    taster.save()
-  }
+export function handleDestroyActor(event: LogDestroyActor): void {
+    let actorAddress = event.params._actorAddress.toHex()
+    destroyActor(actorAddress)
 }
-
 
 export function handleCooperativeAddActor(event: LogCooperativeAddActor): void {
-    let id = event.params._id.toHex()
-    let type = event.params._typeOfActor.toString()
     let cooperative = Cooperative.load(event.params._cooperativeAddress.toHex())
+    let actorAddress = event.params._actorAddress.toHex()
+    let role = event.params._role.toString()
 
-    if (type == 'farmer'){
-        let producer = new Producer(id)
+    if (cooperative != null){
+        if (role == FARMER){
+            let producer = new Producer(actorAddress)
+            producer.allowedTasters = []
+            producer.allowedValidators = []
+            let allowedC: Array<String>
+            allowedC.push(cooperative.id)
+            producer.allowedCooperatives = allowedC
 
-        producer.name = event.params._name.toString()
-        producer.country = event.params._country.toString()
-        producer.region = event.params._region.toString()
-        producer.email = event.params._email.toString()
-        producer.imageHash = event.params._imageHash
-        producer.bio = event.params._bio
-        producer.allowedTasters = []
-        let allowedC: Array<String>
-        allowedC.push(cooperative.id)
-        producer.allowedCooperatives = allowedC
-
-        producer.save()
-    }
-    else (type == 'taster'){
-        let cooperative2 = Cooperative.load(id)
-        let producer = Producer.load(id)
-        if (cooperative2 == null && producer == null){
-            let taster = new Taster(id)
-            taster.name = event.params._name.toString()
-            taster.country = event.params._country.toString()
-            taster.region = event.params._region.toString()
-            taster.email = event.params._email.toString()
-            taster.imageHash = event.params._imageHash
-            taster.bio = event.params._bio
+            producer.save()
+        }
+        if (role == TASTER){
+            let taster = new Taster(actorAddress)
             taster.save()
         }
+        if (role == CERTIFIER){
+            let certifier = new Certifier(actorAddress);
+            certifier.save()
+        }
+        if (role == TECHNICIAN){
+            let technician = new Certifier(actorAddress);
+            technician.save()
+        }
+        if (role == VALIDATOR){
+            let validator = new Validator(actorAddress);
+            validator.save()
+        }
+        if (role == BENEFIT){
+            let benefit = new Benefit(actorAddress);
+            benefit.save()
+        }
+        if (role == ROASTER){
+            let roaster = new Roaster(actorAddress);
+            roaster.save()
+        }
     }
+}
+
+export function handleCooperativeDestroyActor(event: LogCooperativeDestroyActor): void {
+    let actorAddress = event.params._actorAddress.toHex()
+    let cooperativeAddress = event.params._cooperativeAddress.toHex()
+    let cooperative = Cooperative.load(cooperativeAddress)
+
+    if (cooperative != null)
+        destroyActor(actorAddress)
 }
 
 export function handleApproval(event: LogApproval): void{
@@ -135,6 +131,7 @@ export function handleApproval(event: LogApproval): void{
     if (producer != null) {
         let allowedId = event.params._allowed.toHex()
         let taster = Taster.load(allowedId)
+
         if (taster != null){
             let allowedT: Array<String>
             allowedT = producer.allowedTasters
@@ -149,15 +146,25 @@ export function handleApproval(event: LogApproval): void{
                 allowedC.push(cooperative.id)
                 producer.allowedCooperatives = allowedC
             }
+            else{
+                let validator = Validator.load(allowedId)
+                if (validator != null){
+                    let allowedV: Array<String>
+                    allowedV = producer.allowedValidators
+                    allowedV.push(validator.id)
+                    producer.allowedValidators = allowedV
+                }
+            }
         }
         producer.save()
     }
 }
 
 export function handleCooperativeApproval(event: LogCooperativeApproval): void{
+    let cooperative = Cooperative.load(event.params._cooperativeAddress.toHex())
     let producer = Producer.load(event.params._owner.toHex())
 
-    if (producer != null) {
+    if (producer != null && cooperative != null) {
         let allowedId = event.params._allowed.toHex()
         let taster = Taster.load(allowedId)
         if (taster != null){
@@ -167,14 +174,64 @@ export function handleCooperativeApproval(event: LogCooperativeApproval): void{
             producer.allowedTasters = allowedT
         }
         else{
-            let cooperative = Cooperative.load(allowedId)
-            if (cooperative != null){
+            let cooperative2 = Cooperative.load(allowedId)
+            if (cooperative2 != null){
                 let allowedC: Array<String>
                 allowedC = producer.allowedCooperatives
-                allowedC.push(cooperative.id)
+                allowedC.push(cooperative2.id)
                 producer.allowedCooperatives = allowedC
+            }
+            else{
+                let validator = Validator.load(allowedId)
+                if (validator != null){
+                    let allowedV: Array<String>
+                    allowedV = producer.allowedValidators
+                    allowedV.push(validator.id)
+                    producer.allowedValidators = allowedV
+                }
             }
         }
         producer.save()
+    }
+}
+
+function destroyActor(actorAddress: string): void{
+    let producer = Producer.load(actorAddress)
+    if (producer != null)
+        store.remove('Producer', actorAddress)
+    else{
+        let cooperative = Cooperative.load(actorAddress)
+        if (cooperative != null)
+            store.remove('Cooperative', actorAddress)
+        else{
+            let taster = Taster.load(actorAddress)
+            if (taster != null)
+                store.remove('Taster', actorAddress)
+            else{
+                let validator = Validator.load(actorAddress)
+                if (validator != null)
+                    store.remove('Validator', actorAddress)
+                else{
+                    let certifier = Certifier.load(actorAddress)
+                    if (certifier != null)
+                        store.remove('Certifier', actorAddress)
+                    else{
+                        let technician = Technician.load(actorAddress)
+                        if (technician != null)
+                            store.remove('Technician', actorAddress)
+                        else{
+                            let benefit = Benefit.load(actorAddress)
+                            if (benefit != null)
+                                store.remove('Benefit', actorAddress)
+                            else{
+                                let roaster = Roaster.load(actorAddress)
+                                if (roaster != null)
+                                    store.remove('Roaster', actorAddress)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

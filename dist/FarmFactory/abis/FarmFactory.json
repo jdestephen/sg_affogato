@@ -11,6 +11,26 @@
   },
   {
     "constant": true,
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "isPauser",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x46fbf68e"
+  },
+  {
+    "constant": true,
     "inputs": [],
     "name": "paused",
     "outputs": [
@@ -23,6 +43,16 @@
     "stateMutability": "view",
     "type": "function",
     "signature": "0x5c975abb"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "renouncePauser",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x6ef8d66d"
   },
   {
     "constant": false,
@@ -45,7 +75,7 @@
     "name": "farms",
     "outputs": [
       {
-        "name": "uid",
+        "name": "id",
         "type": "uint256"
       },
       {
@@ -79,28 +109,19 @@
     "signature": "0x7da470ea"
   },
   {
-    "constant": true,
+    "constant": false,
     "inputs": [
       {
-        "name": "",
+        "name": "account",
         "type": "address"
-      },
-      {
-        "name": "",
-        "type": "uint256"
       }
     ],
-    "name": "farmerToFarms",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "name": "addPauser",
+    "outputs": [],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0x7f2265aa"
+    "signature": "0x82dc1ec4"
   },
   {
     "constant": false,
@@ -160,7 +181,7 @@
   {
     "inputs": [
       {
-        "name": "_actorAddress",
+        "name": "_actorFactoryAddress",
         "type": "address"
       }
     ],
@@ -168,6 +189,11 @@
     "stateMutability": "nonpayable",
     "type": "constructor",
     "signature": "constructor"
+  },
+  {
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "fallback"
   },
   {
     "anonymous": false,
@@ -356,6 +382,47 @@
     "inputs": [
       {
         "indexed": false,
+        "name": "_actorAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_farmId",
+        "type": "uint256"
+      }
+    ],
+    "name": "LogDestroyFarm",
+    "type": "event",
+    "signature": "0xbcb21d1d0ac23caa6fdbfaf0bf1fdf5daa1443e37fdaeea060af8823594c4b93"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "_cooperativeAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_actorAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "_farmId",
+        "type": "uint256"
+      }
+    ],
+    "name": "LogCooperativeDestroyFarm",
+    "type": "event",
+    "signature": "0x1864915abde6d691ba3ec5fefe325bbaa5161f7cd3161bc4765443df0a3e0f34"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
         "name": "account",
         "type": "address"
       }
@@ -382,6 +449,32 @@
     "inputs": [
       {
         "indexed": true,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "PauserAdded",
+    "type": "event",
+    "signature": "0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "PauserRemoved",
+    "type": "event",
+    "signature": "0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
         "name": "previousOwner",
         "type": "address"
       },
@@ -399,27 +492,7 @@
     "constant": true,
     "inputs": [
       {
-        "name": "_farmer",
-        "type": "address"
-      }
-    ],
-    "name": "getFarmersFarmsCount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x804990bc"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "uid",
+        "name": "_id",
         "type": "uint256"
       }
     ],
@@ -458,6 +531,26 @@
     "stateMutability": "view",
     "type": "function",
     "signature": "0xfd3cb451"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFarmOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xbc7aa933"
   },
   {
     "constant": false,
@@ -529,7 +622,7 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_uid",
+        "name": "_id",
         "type": "uint256"
       },
       {
@@ -564,7 +657,7 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_uid",
+        "name": "_id",
         "type": "uint256"
       },
       {
@@ -598,6 +691,36 @@
     "stateMutability": "nonpayable",
     "type": "function",
     "signature": "0x5f5dc8fd"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_farmId",
+        "type": "uint256"
+      }
+    ],
+    "name": "destroyFarm",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x2feeae54"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_farmId",
+        "type": "uint256"
+      }
+    ],
+    "name": "cooperativeDestroyFarm",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xd65c0eed"
   },
   {
     "constant": false,

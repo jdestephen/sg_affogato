@@ -45,6 +45,70 @@
       "signature": "0x5c975abb"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "certificates",
+      "outputs": [
+        {
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "name": "certfierAddress",
+          "type": "address"
+        },
+        {
+          "name": "name",
+          "type": "bytes32"
+        },
+        {
+          "name": "imageHash",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "additionalInformation",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x663b3e22"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "coffeeBatchToCertificates",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x6c83af5e"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "renouncePauser",
@@ -63,50 +127,6 @@
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0x715018a6"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "farms",
-      "outputs": [
-        {
-          "name": "id",
-          "type": "uint256"
-        },
-        {
-          "name": "ownerAddress",
-          "type": "address"
-        },
-        {
-          "name": "name",
-          "type": "bytes32"
-        },
-        {
-          "name": "country",
-          "type": "bytes32"
-        },
-        {
-          "name": "region",
-          "type": "bytes32"
-        },
-        {
-          "name": "village",
-          "type": "bytes32"
-        },
-        {
-          "name": "story",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x7da470ea"
     },
     {
       "constant": false,
@@ -181,7 +201,11 @@
     {
       "inputs": [
         {
-          "name": "_actorFactoryAddress",
+          "name": "_actorAddress",
+          "type": "address"
+        },
+        {
+          "name": "_coffeeBatchAddress",
           "type": "address"
         }
       ],
@@ -205,7 +229,7 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
+          "name": "_certifierAddress",
           "type": "address"
         },
         {
@@ -215,28 +239,23 @@
         },
         {
           "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
+          "name": "_imageHash",
+          "type": "string"
         },
         {
           "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
+          "name": "_description",
+          "type": "string"
         },
         {
           "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
+          "name": "_additionalInformation",
           "type": "string"
         }
       ],
-      "name": "LogAddFarm",
+      "name": "LogAddCertificate",
       "type": "event",
-      "signature": "0xd3098ac7a01b8686f2c8cf144119f6859cf9c56bf618f465fe488e3e6656e46f"
+      "signature": "0x1c0301de5558dec00629290b8c99777b715c30ed012dfbf0db1fbe20281e3109"
     },
     {
       "anonymous": false,
@@ -248,7 +267,7 @@
         },
         {
           "indexed": false,
-          "name": "_ownerAddress",
+          "name": "_certifierAddress",
           "type": "address"
         },
         {
@@ -258,124 +277,23 @@
         },
         {
           "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
+          "name": "_imageHash",
           "type": "string"
         },
         {
           "indexed": false,
-          "name": "_cooperativeAddress",
-          "type": "address"
-        }
-      ],
-      "name": "LogCooperativeAddFarm",
-      "type": "event",
-      "signature": "0xb907d9604da8df7ea880542c0d8e00cbbed12bf917b1737040441c07e74c9b3b"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "name": "_ownerAddress",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
-          "type": "string"
-        }
-      ],
-      "name": "LogUpdateFarm",
-      "type": "event",
-      "signature": "0x7f5e4e1c4757aaf20449560bac8ece2ff17e57224d66d47680d9f30bf3fdab2f"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "name": "_ownerAddress",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "name": "_story",
+          "name": "_description",
           "type": "string"
         },
         {
           "indexed": false,
-          "name": "_cooperativeAddress",
-          "type": "address"
+          "name": "_additionalInformation",
+          "type": "string"
         }
       ],
-      "name": "LogCooperativeUpdateFarm",
+      "name": "LogUpdateCertificate",
       "type": "event",
-      "signature": "0x21f6091b3e1952e05b74c536d861fcf1b8cbdf1ade243c5689626630c69c7e22"
+      "signature": "0x98ba5cb37d78bcfc849ee26f3276a8398b531e419ada39057b993bb6130b25f2"
     },
     {
       "anonymous": false,
@@ -387,22 +305,27 @@
         },
         {
           "indexed": false,
-          "name": "_farmId",
+          "name": "_certifierAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_coffeeBatchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_certificateId",
           "type": "uint256"
         }
       ],
-      "name": "LogDestroyFarm",
+      "name": "LogAssignCertificate",
       "type": "event",
-      "signature": "0xbcb21d1d0ac23caa6fdbfaf0bf1fdf5daa1443e37fdaeea060af8823594c4b93"
+      "signature": "0xbc8258cddc647771b60213e7f91eb27f55113c4f17a0489a603d084c0648869c"
     },
     {
       "anonymous": false,
       "inputs": [
-        {
-          "indexed": false,
-          "name": "_cooperativeAddress",
-          "type": "address"
-        },
         {
           "indexed": false,
           "name": "_actorAddress",
@@ -410,13 +333,41 @@
         },
         {
           "indexed": false,
-          "name": "_farmId",
+          "name": "_certifierAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_coffeeBatchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_certificateId",
           "type": "uint256"
         }
       ],
-      "name": "LogCooperativeDestroyFarm",
+      "name": "LogUnassignCertificate",
       "type": "event",
-      "signature": "0x1864915abde6d691ba3ec5fefe325bbaa5161f7cd3161bc4765443df0a3e0f34"
+      "signature": "0xa2d8404fcdd17225c61d2f63e23b03144df4ed56f601173171dae75d54943235"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_actorAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogDestroyCertificate",
+      "type": "event",
+      "signature": "0x30ae4d8420d4aa2aa6d1b4483611a087171dfc2bb0e183ecc579ecb1c686f45a"
     },
     {
       "anonymous": false,
@@ -492,45 +443,21 @@
       "constant": true,
       "inputs": [
         {
-          "name": "_id",
+          "name": "_coffeeBatchId",
           "type": "uint256"
         }
       ],
-      "name": "getFarmById",
+      "name": "getCoffeeBatchCertificatesCount",
       "outputs": [
         {
           "name": "",
           "type": "uint256"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "bytes32"
-        },
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "address"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0xfd3cb451"
+      "signature": "0xa96dd2df"
     },
     {
       "constant": true,
@@ -540,17 +467,37 @@
           "type": "uint256"
         }
       ],
-      "name": "getFarmOwner",
+      "name": "getCertificateById",
       "outputs": [
         {
           "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
           "type": "address"
+        },
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0xbc7aa933"
+      "signature": "0x9d735caf"
     },
     {
       "constant": false,
@@ -560,69 +507,30 @@
           "type": "bytes32"
         },
         {
-          "name": "_country",
-          "type": "bytes32"
+          "name": "_imageHash",
+          "type": "string"
         },
         {
-          "name": "_region",
-          "type": "bytes32"
+          "name": "_description",
+          "type": "string"
         },
         {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
+          "name": "_additionalInformation",
           "type": "string"
         }
       ],
-      "name": "addFarm",
+      "name": "addCertificate",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0xf3020dd1"
+      "signature": "0xaa11b60b"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
-        },
-        {
-          "name": "_farmerAddress",
-          "type": "address"
-        }
-      ],
-      "name": "cooperativeAddFarm",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x79e3da97"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
+          "name": "_certificateId",
           "type": "uint256"
         },
         {
@@ -630,97 +538,77 @@
           "type": "bytes32"
         },
         {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
-          "type": "string"
-        }
-      ],
-      "name": "updateFarm",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xd8d01e3e"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_id",
-          "type": "uint256"
-        },
-        {
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "name": "_country",
-          "type": "bytes32"
-        },
-        {
-          "name": "_region",
-          "type": "bytes32"
-        },
-        {
-          "name": "_village",
-          "type": "bytes32"
-        },
-        {
-          "name": "_story",
+          "name": "_imageHash",
           "type": "string"
         },
         {
-          "name": "_farmerAddress",
-          "type": "address"
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "name": "_additionalInformation",
+          "type": "string"
         }
       ],
-      "name": "cooperativeUpdateFarm",
+      "name": "updateCertificate",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0x5f5dc8fd"
+      "signature": "0x647d1b82"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_farmId",
+          "name": "_coffeeBatchId",
+          "type": "uint256"
+        },
+        {
+          "name": "_certificateId",
           "type": "uint256"
         }
       ],
-      "name": "destroyFarm",
+      "name": "assignCertificate",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0x2feeae54"
+      "signature": "0x4bad986c"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_farmId",
+          "name": "_coffeeBatchId",
+          "type": "uint256"
+        },
+        {
+          "name": "_certificateId",
           "type": "uint256"
         }
       ],
-      "name": "cooperativeDestroyFarm",
+      "name": "unassignCertificate",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0xd65c0eed"
+      "signature": "0xf0a1d387"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_certificateId",
+          "type": "uint256"
+        }
+      ],
+      "name": "destroyCertificate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x2c1ecf9b"
     },
     {
       "constant": false,

@@ -1,17 +1,19 @@
 {
-  "name": "sg_affogato",
+  "name": "affogato",
   "version": "0.1.0",
   "scripts": {
-    "create": "graph create jdestephen/sg_affogato --node https://api.thegraph.com/deploy/",
+    "create": "graph create jdestephen/affogato --node https://api.thegraph.com/deploy/",
+    "create-ropsten": "graph create jdestephen/affogato-ropsten --node https://api.thegraph.com/deploy/",
     "create-local": "graph create jdestephen/sg_affogato --node http://127.0.0.1:8020",
     "codegen": "graph codegen --debug --output-dir src/types/",
     "build": "graph build --debug",
-    "deploy": "graph deploy jdestephen/sg_affogato --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy": "graph deploy jdestephen/affogato --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-ropsten": "graph deploy jdestephen/affogato-ropsten --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "deploy-local": "graph deploy jdestephen/sg_affogato --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.7.1",
-    "@graphprotocol/graph-ts": "^0.5.0"
+    "@graphprotocol/graph-ts": "^0.14.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

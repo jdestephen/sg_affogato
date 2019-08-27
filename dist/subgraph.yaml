@@ -1,14 +1,14 @@
 specVersion: 0.0.1
-description: Affogato Actors
+description: Affogato schema
 repository: 'https://github.com/jdestephen/sg_affogato'
 schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: ActorFactory
-    network: rinkeby
+    network: development
     source:
-      address: '0x51dC72631E9C730590cc93aB631E1B83B9067C0d'
+      address: '0x6b63678F3F12a7B2bc3e56105b9D30274D1EbB40'
       abi: ActorFactory
     mapping:
       kind: ethereum/events
@@ -20,15 +20,14 @@ dataSources:
         - name: ActorFactory
           file: ActorFactory/abis/ActorFactory.json
       eventHandlers:
-        - event: >-
-            LogAddActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
+        - event: 'LogAddActor(address,bytes32)'
           handler: handleNewActor
-        - event: >-
-            LogUpdateActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string)
-          handler: handleUpdatedActor
-        - event: >-
-            LogCooperativeAddActor(address,bytes32,bytes32,bytes32,bytes32,bytes32,string,string,address)
+        - event: 'LogCooperativeAddActor(address,address,bytes32)'
           handler: handleCooperativeAddActor
+        - event: LogDestroyActor(address)
+          handler: handleDestroyActor
+        - event: 'LogCooperativeDestroyActor(address,address)'
+          handler: handleCooperativeDestroyActor
         - event: 'LogApproval(address,address,bool)'
           handler: handleApproval
         - event: 'LogCooperativeApproval(address,address,bool,address)'
@@ -36,9 +35,9 @@ dataSources:
       file: ActorFactory/ActorFactory.wasm
   - kind: ethereum/contract
     name: FarmFactory
-    network: rinkeby
+    network: development
     source:
-      address: '0x59f0831790a1413eef94dA83276F0A1F64DC9289'
+      address: '0x1B9330fFfB8b92501A47e8FC07470A0796fb9A5F'
       abi: FarmFactory
     mapping:
       kind: ethereum/events
@@ -61,12 +60,16 @@ dataSources:
         - event: >-
             LogCooperativeUpdateFarm(uint256,address,bytes32,bytes32,bytes32,bytes32,string,address)
           handler: handleCooperativeUpdatedFarm
+        - event: 'LogDestroyFarm(address,uint256)'
+          handler: handleDestroyFarm
+        - event: 'LogCooperativeDestroyFarm(address,address,uint256)'
+          handler: handleCooperativeDestroyFarm
       file: FarmFactory/FarmFactory.wasm
   - kind: ethereum/contract
     name: CoffeeBatchFactory
-    network: rinkeby
+    network: development
     source:
-      address: '0xB5b0C606782Cb8e574d56989CA77FB7672251085'
+      address: '0xFF972a1570BB6d234a983DF3C5300aAa65Fca0e5'
       abi: CoffeeBatchFactory
     mapping:
       kind: ethereum/events
@@ -79,24 +82,28 @@ dataSources:
           file: CoffeeBatchFactory/abis/CoffeeBatchFactory.json
       eventHandlers:
         - event: >-
-            LogAddCoffeeBatch(uint256,address,uint256,uint16,bytes32,bytes32,uint32,bool)
+            LogAddCoffeeBatch(uint256,address,uint256,uint16,bytes32,bytes32,uint32,bytes32,string)
           handler: handleAddCoffeeBatch
         - event: >-
-            LogCooperativeAddCoffeeBatch(uint256,address,uint256,uint16,bytes32,bytes32,uint32,bool,address)
+            LogCooperativeAddCoffeeBatch(uint256,address,uint256,uint16,bytes32,bytes32,uint32,bytes32,string,address)
           handler: handleCooperativeAddCoffeeBatch
         - event: >-
-            LogUpdateCoffeeBatch(uint256,uint256,address,uint16,bytes32,bytes32,uint32,bool)
+            LogUpdateCoffeeBatch(uint256,uint256,address,uint16,bytes32,bytes32,uint32,bytes32,string)
           handler: handleUpdateCoffeeBatch
         - event: >-
-            LogCooperativeUpdateCoffeeBatch(uint256,uint256,address,uint16,bytes32,bytes32,uint32,bool,address)
+            LogCooperativeUpdateCoffeeBatch(uint256,uint256,address,uint16,bytes32,bytes32,uint32,bytes32,string,address)
           handler: handleCooperativeUpdateCoffeeBatch
+        - event: 'LogDestroyCoffeeBatch(address,uint256)'
+          handler: handleDestroyCoffeeBatch
+        - event: 'LogCooperativeDestroyCoffeeBatch(address,address,uint256)'
+          handler: handleCooperativeDestroyCoffeeBatch
       file: CoffeeBatchFactory/CoffeeBatchFactory.wasm
   - kind: ethereum/contract
-    name: TastingFactory
-    network: rinkeby
+    name: CupProfileFactory
+    network: development
     source:
-      address: '0xDBF134Ac46C6C221d84768Ac38fa3E32fF12AAC5'
-      abi: TastingFactory
+      address: '0x857d48d02802839aF8846cabDdde584D136a82A0'
+      abi: CupProfileFactory
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.1
@@ -104,13 +111,38 @@ dataSources:
       entities:
         - CupProfile
       abis:
-        - name: TastingFactory
-          file: TastingFactory/abis/TastingFactory.json
+        - name: CupProfileFactory
+          file: CupProfileFactory/abis/CupProfileFactory.json
       eventHandlers:
-        - event: >-
-            LogAddCupProfile(uint256,uint256,address,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,string,uint16)
+        - event: 'LogAddCupProfile(uint256,uint256,address,string,string,uint16)'
           handler: handleAddCupProfile
-        - event: >-
-            LogUpdateCupProfile(uint256,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,string,uint16)
+        - event: 'LogUpdateCupProfile(uint256,string,string,uint16)'
           handler: handleUpdateCupProfile
-      file: TastingFactory/TastingFactory.wasm
+        - event: 'LogDestroyCupProfile(address,uint256)'
+          handler: handleDestroyCupProfile
+      file: CupProfileFactory/CupProfileFactory.wasm
+  - kind: ethereum/contract
+    name: CertificateFactory
+    network: development
+    source:
+      address: '0xf9fb318804B9190D30Ff5D6Fb9bD026f70De1eA0'
+      abi: CertificateFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      entities:
+        - Certificate
+      abis:
+        - name: CertificateFactory
+          file: CertificateFactory/abis/CertificateFactory.json
+      eventHandlers:
+        - event: 'LogAddCertificate(uint256,address,bytes32,string,string,string)'
+          handler: handleAddCertificate
+        - event: 'LogUpdateCertificate(uint256,address,bytes32,string,string,string)'
+          handler: handleUpdateCertificate
+        - event: 'LogAssignCertificate(address,address,uint256,uint256)'
+          handler: handleAssignCertificate
+        - event: 'LogUnassignCertificate(address,address,uint256,uint256)'
+          handler: handleUnassignCertificate
+      file: CertificateFactory/CertificateFactory.wasm

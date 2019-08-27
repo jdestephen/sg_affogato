@@ -1,4 +1,5 @@
-import { LogAddCupProfile, LogUpdateCupProfile} from './types/TastingFactory/TastingFactory'
+import { store } from '@graphprotocol/graph-ts'
+import { LogAddCupProfile, LogUpdateCupProfile, LogDestroyCupProfile} from './types/CupProfileFactory/CupProfileFactory'
 import { CupProfile, CoffeeBatch, Taster } from './types/schema'
 
 
@@ -10,16 +11,10 @@ export function handleAddCupProfile(event: LogAddCupProfile): void {
   if (coffeeBatch != null && taster != null){
       cupProfile.coffeeBatch = coffeeBatch.id
       cupProfile.taster = taster.id
-      cupProfile.aroma = event.params._aroma.toString()
-      cupProfile.sweetness = event.params._sweetness.toString()
-      cupProfile.flavor = event.params._flavor.toString()
-      cupProfile.acidity = event.params._acidity.toString()
-      cupProfile.body = event.params._body.toString()
-      cupProfile.aftertaste = event.params._aftertaste.toString()
+      cupProfile.profile = event.params._profile
       cupProfile.cuppingNote = event.params._cuppingNote
       if (event.params._imageHash != null)
         cupProfile.imageHash = event.params._imageHash
-
       cupProfile.save()
   }
 }
@@ -31,14 +26,18 @@ export function handleUpdateCupProfile(event: LogUpdateCupProfile): void {
     cupProfile = new CupProfile(id)
   }
 
-  cupProfile.aroma = event.params._aroma.toString()
-  cupProfile.sweetness = event.params._sweetness.toString()
-  cupProfile.flavor = event.params._flavor.toString()
-  cupProfile.acidity = event.params._acidity.toString()
-  cupProfile.body = event.params._body.toString()
-  cupProfile.aftertaste = event.params._aftertaste.toString()
-  cupProfile.imageHash = event.params._imageHash.toString()
+  cupProfile.profile = event.params._profile
+  cupProfile.imageHash = event.params._imageHash
   cupProfile.cuppingNote = event.params._cuppingNote
-
   cupProfile.save()
 }
+
+export function handleDestroyCupProfile(event: LogDestroyCupProfile): void {
+    let cupProfile = CupProfile.load(event.params._id.toString())
+    let taster = Taster.load(event.params._actorAddress.toHex())
+
+    if (taster != null && cupProfile != null){
+        store.remove('CupProfile', cupProfile.id)
+    }
+}
+

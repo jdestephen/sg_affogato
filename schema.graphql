@@ -1,48 +1,48 @@
 interface Actor {
   id: ID!
-  name: String!
-  country: String!
-  region: String!
-  email: String!
-  imageHash: String!
-  bio: String!
 }
 
 type Producer implements Actor @entity  {
   id: ID!
-  name: String!
-  country: String!
-  region: String!
-  email: String!
-  imageHash: String!
-  bio: String!
   farms: [Farm!] @derivedFrom(field: "owner")
   coffeeBatches: [CoffeeBatch!]! @derivedFrom(field: "owner")
   allowedCooperatives: [Cooperative!]!
   allowedTasters: [Taster!]!
+  allowedValidators: [Validator!]!
+  certificates: [Certificate!]! @derivedFrom(field: "producer")
 }
 
 type Cooperative implements Actor @entity  {
   id: ID!
-  name: String!
-  country: String!
-  region: String!
-  email: String!
-  imageHash: String!
-  bio: String!
   producers: [Producer!]! @derivedFrom(field: "allowedCooperatives")
 }
 
 type Taster implements Actor @entity  {
   id: ID!
-  name: String!
-  country: String!
-  region: String!
-  email: String!
-  imageHash: String!
-  bio: String!
   cupProfiles: [CupProfile!]! @derivedFrom(field: "taster")
   producers: [Producer!]! @derivedFrom(field: "allowedTasters")
+}
+
+type Certifier implements Actor @entity  {
+  id: ID!
+  certificates: [Certificate!]! @derivedFrom(field: "certifier")
+}
+
+type Technician implements Actor @entity  {
+  id: ID!
+}
+
+type Validator implements Actor @entity {
+  id: ID!
+  producers: [Producer!]! @derivedFrom(field: "allowedValidators")
+}
+
+type Benefit implements Actor @entity {
+  id: ID!
+}
+
+type Roaster implements Actor @entity {
+  id: ID!
 }
 
 type Farm @entity {
@@ -56,7 +56,6 @@ type Farm @entity {
     coffeeBatches: [CoffeeBatch!]! @derivedFrom(field: "farm")
 }
 
-
 type CoffeeBatch @entity {
     id: ID!
     owner: Producer!
@@ -65,20 +64,30 @@ type CoffeeBatch @entity {
     variety: String!
     process: String
     size: BigInt!
-    isSold: Boolean!
+    coffeeState: String!
+    additionalInformation: String
     cupProfiles: [CupProfile!]! @derivedFrom(field: "coffeeBatch")
+    certificates: [Certificate!]! @derivedFrom(field: "coffeeBatches")
 }
 
 type CupProfile @entity {
     id: ID!
     coffeeBatch: CoffeeBatch!
     taster: Taster!
-    aroma: String!
-    sweetness: String!
-    flavor: String!
-    acidity: String!
-    body: String!
-    aftertaste: String!
+    profile: String!
     imageHash: String
     cuppingNote: Int!
 }
+
+type Certificate @entity {
+    id: ID!
+    certifier: Certifier!
+    name: String!
+    imageHash: String!
+    description: String!
+    additionalInformation: String!
+    coffeeBatches: [CoffeeBatch!]!
+}
+
+
+
